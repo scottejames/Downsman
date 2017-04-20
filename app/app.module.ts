@@ -6,16 +6,18 @@ import {TeamService} from './teams/team-service'
 import {NavBarComponent} from './nav/navbar.component'
 import {TeamThumbnailComponent} from './teams/team-thumbnail.component'
 import {TeamListComponent} from './teams/team-list.component'
+import {TeamDetailsComponent} from './teams/team-details.component'
 import {HelloComponent} from './sample/hello.component'
 import {appRoutes} from './routes'
 
 
 @NgModule({
-	imports: [BrowserModule,RouterModule.forRoot(appRoutes)],
+	imports: [BrowserModule,RouterModule.forRoot(appRoutes,{ useHash: true })],
 	declarations: [
 		NavBarComponent,
 		DownsmanAppComponent,
 		TeamListComponent,
+		TeamDetailsComponent,
 		TeamThumbnailComponent,
 		HelloComponent
 	],

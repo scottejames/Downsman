@@ -4,8 +4,8 @@ export class TeamService {
   getTeams() {
     return TEAMS
   }
-  getEvent(id : number) {
-    return TEAMS.find(event => event.id === id)
+  getTeam(id : number) {
+    return TEAMS.find(team => team.id === id)
   }
 }
 
