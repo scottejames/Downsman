@@ -7,9 +7,11 @@ import {NavBarComponent} from './nav/navbar.component'
 import {TeamThumbnailComponent} from './teams/team-thumbnail.component'
 import {TeamListComponent} from './teams/team-list.component'
 import {HelloComponent} from './sample/hello.component'
+import {appRoutes} from './routes'
+
 
 @NgModule({
-	imports: [BrowserModule,RouterModule],
+	imports: [BrowserModule,RouterModule.forRoot(appRoutes)],
 	declarations: [
 		NavBarComponent,
 		DownsmanAppComponent,

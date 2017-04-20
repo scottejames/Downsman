@@ -4,7 +4,7 @@ import {Component} from '@angular/core'
 	selector: 'downsman-app',
 	template: `
 	<nav-bar></nav-bar>
-	<team-list></team-list>
+	<router-outlet></router-outlet>
 	`
 })
 export class DownsmanAppComponent {
