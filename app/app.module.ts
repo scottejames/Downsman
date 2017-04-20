@@ -9,7 +9,7 @@ import {TeamListComponent} from './teams/team-list.component'
 import {TeamDetailsComponent} from './teams/team-details.component'
 import {HelloComponent} from './sample/hello.component'
 import {appRoutes} from './routes'
-
+import {TeamNewComponent} from './teams/team-new.component'
 
 @NgModule({
 	imports: [BrowserModule,RouterModule.forRoot(appRoutes,{ useHash: true })],
@@ -19,7 +19,8 @@ import {appRoutes} from './routes'
 		TeamListComponent,
 		TeamDetailsComponent,
 		TeamThumbnailComponent,
-		HelloComponent
+		HelloComponent,
+		TeamNewComponent
 	],
 	providers: [
 		TeamService
