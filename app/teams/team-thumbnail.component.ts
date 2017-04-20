@@ -3,7 +3,7 @@ import {Component,Input,Output,EventEmitter} from '@angular/core'
 @Component ({
 selector : 'team-thumbnail',
 template : `
-  <div class= "well hoverwell thumbnail">
+  <div [routerLink]="['/teams',team.id]"class= "well hoverwell thumbnail">
     <h2> {{team.name}}</h2>
       <div> Group: {{team.group}} </div>
       <div> Leader: {{team.leader}} </div>
