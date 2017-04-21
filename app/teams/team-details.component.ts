@@ -1,6 +1,7 @@
 import {Component} from '@angular/core'
-import {TeamService} from './team.service'
 import {ActivatedRoute} from '@angular/router'
+
+import {TeamService,ITeam} from './index'
 
 @Component({
   templateUrl: '/app/teams/team-details.component.html',
@@ -9,7 +10,7 @@ import {ActivatedRoute} from '@angular/router'
     `]
 })
 export class TeamDetailsComponent{
-  team:any
+  team:ITeam
 
   constructor (private teamService: TeamService,
                 private route:ActivatedRoute){

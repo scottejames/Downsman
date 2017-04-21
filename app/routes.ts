@@ -1,10 +1,13 @@
 import {Routes} from '@angular/router'
-import {TeamListComponent} from './teams/team-list.component'
-import {TeamDetailsComponent} from './teams/team-details.component'
-import {TeamNewComponent} from './teams/team-new.component'
-import {Error404Component} from './nav/404.component'
-import {TeamRouteActivator} from './teams/team-route-activator.service'
 
+import {Error404Component} from './nav/404.component'
+
+import {
+  TeamRouteActivator,
+  TeamListComponent,
+  TeamDetailsComponent,
+  TeamNewComponent
+} from './teams/index'
 
 export const appRoutes:Routes = [
   { path: '404', component: Error404Component },

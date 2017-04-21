@@ -1,5 +1,5 @@
 import {Component,OnInit} from '@angular/core'
-import {TeamService} from './team.service'
+import {TeamService,ITeam} from './index'
 @Component ({
   selector : 'team-list',
   template: `
@@ -17,7 +17,7 @@ import {TeamService} from './team.service'
 })
 
 export class TeamListComponent implements OnInit{
-	teams : any
+	teams : ITeam[]
 	constructor(private teamService: TeamService){
 	}
 	ngOnInit(){
