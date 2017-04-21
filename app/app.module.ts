@@ -7,6 +7,7 @@ import {NavBarComponent} from './nav/navbar.component'
 import {HelloComponent} from './sample/hello.component'
 import {appRoutes} from './routes'
 import {Error404Component} from './nav/404.component'
+import {AuthService} from './user/auth.service'
 
 import {
     TeamRouteActivator,
@@ -31,8 +32,8 @@ import {
     ],
     providers: [
         TeamService,
-        TeamRouteActivator
-
+        TeamRouteActivator,
+        AuthService
     ],
     bootstrap: [DownsmanAppComponent]
 })
