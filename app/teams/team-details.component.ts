@@ -1,5 +1,5 @@
 import {Component} from '@angular/core'
-import {TeamService} from './team-service'
+import {TeamService} from './team.service'
 import {ActivatedRoute} from '@angular/router'
 
 @Component({
