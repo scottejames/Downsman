@@ -18,23 +18,24 @@ import {
 } from './teams/index'
 
 @NgModule({
-	imports: [BrowserModule,RouterModule.forRoot(appRoutes,{ useHash: true })],
-	declarations: [
-		NavBarComponent,
-		DownsmanAppComponent,
-		TeamListComponent,
-		TeamDetailsComponent,
-		TeamThumbnailComponent,
-		HelloComponent,
-		TeamNewComponent,
-		Error404Component,
-	],
-	providers: [
-		TeamService,
-		TeamRouteActivator
+    imports: [BrowserModule, RouterModule.forRoot(appRoutes, {useHash: true})],
+    declarations: [
+        NavBarComponent,
+        DownsmanAppComponent,
+        TeamListComponent,
+        TeamDetailsComponent,
+        TeamThumbnailComponent,
+        HelloComponent,
+        TeamNewComponent,
+        Error404Component,
+    ],
+    providers: [
+        TeamService,
+        TeamRouteActivator
 
-  ],
-	bootstrap: [DownsmanAppComponent]
+    ],
+    bootstrap: [DownsmanAppComponent]
 })
 
-export class AppModule {}
+export class AppModule {
+}
