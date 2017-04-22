@@ -8,6 +8,7 @@ import {HelloComponent} from './sample/hello.component'
 import {appRoutes} from './routes'
 import {Error404Component} from './nav/404.component'
 import {AuthService} from './user/auth.service'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 import {
     TeamRouteActivator,
@@ -19,7 +20,10 @@ import {
 } from './teams/index'
 
 @NgModule({
-    imports: [BrowserModule, RouterModule.forRoot(appRoutes, {useHash: true})],
+    imports: [BrowserModule,
+        RouterModule.forRoot(appRoutes, {useHash: true}),
+        FormsModule,
+        ReactiveFormsModule],
     declarations: [
         NavBarComponent,
         DownsmanAppComponent,

@@ -9,6 +9,11 @@ export class TeamService {
   getTeam(id : number) : ITeam {
     return TEAMS.find(event => event.id === id)
   }
+  saveTeam(team:ITeam){
+    team.id = 999;
+    team.members = []
+    TEAMS.push(team)
+  }
 }
 
 const TEAMS :ITeam [] = [
