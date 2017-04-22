@@ -20,6 +20,8 @@ const TEAMS :ITeam [] = [
   {
     id: 1,
     name: 'MadHatters',
+    group: "1st HH",
+    leader: "Chris",
     members : [{
       id: 1,
       name: 'Rod',
@@ -34,6 +36,8 @@ const TEAMS :ITeam [] = [
   {
     id: 2,
     name: 'Fools',
+    group: "5th HH",
+    leader: "BP",
     members : [{
       id: 1,
       name: 'Dick',
@@ -48,6 +52,8 @@ const TEAMS :ITeam [] = [
   {
     id: 1,
     name: 'Woodpidgeons',
+    group: "10th HH",
+    leader: "Scott",
     members : [{
       id: 1,
       name: 'Jenny',

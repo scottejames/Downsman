@@ -1,6 +1,8 @@
 export interface  ITeam{
     id: number,
     name: string,
+    group: string,
+    leader: string,
     members : IMember[]
 }
 

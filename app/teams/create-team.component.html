@@ -17,6 +17,30 @@
         </div>
 
 
+        <div class="form-group" [ngClass]="{'error': newTeamForm.controls.leader?.invalid &&
+                    newTeamForm.controls.leader?.touched}">
+
+            <label for="leader">Leader:</label>
+            <em *ngIf="newTeamForm.controls.leader?.invalid &&
+                (newTeamForm.controls.leader?.touched)">Required</em>
+
+            <input (ngModel)="leader" name="leader" required id="leader" type="text" class="form-control"
+                   placeholder="Scout Leader for team..."/>
+
+        </div>
+
+        <div class="form-group" [ngClass]="{'error': newTeamForm.controls.group?.invalid &&
+                    newTeamForm.controls.group?.touched}">
+
+            <label for="group">Group:</label>
+            <em *ngIf="newTeamForm.controls.group?.invalid &&
+                (newTeamForm.controls.group?.touched)">Required</em>
+
+            <input (ngModel)="group" name="group" required id="group" type="text" class="form-control"
+                   placeholder="Scout Group..."/>
+
+        </div>
+
         <button type="submit" class="btn btn-primary">Save</button>
         <button type="button" [disabled]="newTeamForm.invalid" class="btn btn-default" (click)="cancel()">Cancel
         </button>
