@@ -22,7 +22,6 @@ import {OnInit} from '@angular/core'
 
 export class TeamNewComponent implements OnInit {
     isDirty: boolean = false;
-    scoutGroups : IScoutGroup[] = []
 
     constructor(private router: Router,private teamService:TeamService,private scoutGroupService: ScoutGroupService) {
     }
@@ -36,7 +35,6 @@ export class TeamNewComponent implements OnInit {
     }
 
     ngOnInit() {
-       this.scoutGroups = this.scoutGroupService.getScoutGroups();
     }
 
     cancel() {

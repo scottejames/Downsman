@@ -7,7 +7,8 @@ export class ScoutGroupService {
         return GROUPS
     }
     getScoutGroup(id : number) : IScoutGroup {
-        return GROUPS.find(group => group.id === id);
+        var group : IScoutGroup = GROUPS.find(group => group.id === +id);
+        return group;
     }
     saveGroup(group:IScoutGroup){
         group.id = 999;
@@ -16,17 +17,4 @@ export class ScoutGroupService {
 }
 
 
-const GROUPS :IScoutGroup [] = [
-    {
-        id: 1,
-        name: '1st Haywards Heath'
-    },
-    {
-        id: 2,
-        name: '10th Haywards Heath'
-    },
-    {
-        id: 3,
-        name: '1st BurgesHill'
-
-    }];
+const GROUPS :IScoutGroup [] = [{id: 1, name: '1st Haywards Heath'}, {id: 2, name: '10th Haywards Heath'},{id: 3, name: '1st BurgesHill'}];

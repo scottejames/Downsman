@@ -15,8 +15,20 @@
                 <input formControlName="lastName" id="lastName" type="text" class="form-control" placeholder="Last Name..." />
             </div>
 
+
+            <div class="form-group">
+                <label for="group">Group:</label>
+                <select formControlName="group" id="group" class="form-control" placeholder="Scout Group...">
+
+                    <option *ngFor="let scoutGroup of scoutGroups" value="{{scoutGroup.id}}"> {{scoutGroup.name}} </option>
+
+                </select>
+
+
+            </div>
             <button type="submit" class="btn btn-primary">Save</button>
             <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+            <button type="button" class="btn btn-default" (click)="logout()">Logout</button>
         </form>
     </div>
 </div>
