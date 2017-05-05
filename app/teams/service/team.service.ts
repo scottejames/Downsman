@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core'
-import {ITeam, IMember} from './team.model'
+import {ITeam, IMember} from '../model/team.model'
 
 @Injectable()
 export class TeamService {

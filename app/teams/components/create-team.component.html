@@ -36,8 +36,11 @@
             <em *ngIf="newTeamForm.controls.group?.invalid &&
                 (newTeamForm.controls.group?.touched)">Required</em>
 
-            <input (ngModel)="group" name="group" required id="group" type="text" class="form-control"
-                   placeholder="Scout Group..."/>
+            <select (ngModel)="group" name="group" required id="group" class="form-control">
+                <option *ngFor="let scoutGroup of scoutGroups" value="{{scoutGroup.id}}"> {{scoutGroup.name}} </option>
+
+            </select>
+
 
         </div>
 

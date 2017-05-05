@@ -1,5 +1,5 @@
 import {Component,OnInit} from '@angular/core'
-import {TeamService,ITeam} from './index'
+import {TeamService,ITeam} from '../index'
 @Component ({
   selector : 'team-list',
   template: `

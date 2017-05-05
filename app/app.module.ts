@@ -1,15 +1,23 @@
 import {NgModule}  from '@angular/core'
 import {BrowserModule} from '@angular/platform-browser'
 import {RouterModule} from '@angular/router'
-
-import {DownsmanAppComponent} from './downsman-app.component'
-import {NavBarComponent} from './nav/navbar.component'
-import {HelloComponent} from './sample/hello.component'
-import {appRoutes} from './routes'
-import {Error404Component} from './nav/404.component'
-import {AuthService} from './user/auth.service'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
+import {DownsmanAppComponent} from './downsman-app.component'
+
+import {NavBarComponent} from './nav/navbar.component'
+import {Error404Component} from './nav/404.component'
+
+import {ScoutGroupService} from './scout-group/service/scout-group.service'
+
+import {appRoutes} from './routes'
+
+import {
+    ProfileComponent,
+    LoginComponent,
+    AuthService
+
+} from './user/index'
 import {
     TeamRouteActivator,
     TeamService,
@@ -30,14 +38,16 @@ import {
         TeamListComponent,
         TeamDetailsComponent,
         TeamThumbnailComponent,
-        HelloComponent,
         TeamNewComponent,
         Error404Component,
+        ProfileComponent,
+        LoginComponent
     ],
     providers: [
-        TeamService,
         TeamRouteActivator,
-        AuthService
+        TeamService,
+        AuthService,
+        ScoutGroupService
     ],
     bootstrap: [DownsmanAppComponent]
 })
