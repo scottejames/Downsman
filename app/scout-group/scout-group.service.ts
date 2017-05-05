@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core'
-import {IScoutGroup} from '../model/scout-group.model'
+import {IScoutGroup} from './scout-group.model'
 
 @Injectable()
 export class ScoutGroupService {

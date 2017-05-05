@@ -1,14 +1,14 @@
 import {Component} from '@angular/core'
 import {Router} from '@angular/router'
-import {TeamService} from '../service/team.service'
+import {TeamService} from './team.service'
 
-import {ScoutGroupService} from '../../scout-group/service/scout-group.service'
-import {IScoutGroup} from "../../scout-group/model/scout-group.model";
+import {ScoutGroupService} from '../scout-group/scout-group.service'
+import {IScoutGroup} from "../scout-group/scout-group.model";
 
 import {OnInit} from '@angular/core'
 
 @Component({
-    templateUrl: './create-team.component.html',
+    templateUrl: 'app/teams/create-team.component.html',
     styles: [`
         em {float:right; color:#E05C65; padding-left:10px;}    
         .error input {background-color: #E05C65}

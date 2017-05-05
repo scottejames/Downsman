@@ -8,7 +8,7 @@ import {DownsmanAppComponent} from './downsman-app.component'
 import {NavBarComponent} from './nav/navbar.component'
 import {Error404Component} from './nav/404.component'
 
-import {ScoutGroupService} from './scout-group/service/scout-group.service'
+import {ScoutGroupService} from './scout-group/scout-group.service'
 
 import {appRoutes} from './routes'
 

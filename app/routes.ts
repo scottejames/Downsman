@@ -9,18 +9,22 @@ import {
     TeamNewComponent,
 } from './teams/index'
 
-import {ProfileComponent} from './user/component/profile.component'
-import {LoginComponent} from './user/component/login.component'
+import{
+    ProfileComponent,
+    LoginComponent
+} from './user/index'
+
 
 export const appRoutes: Routes = [
     {path: '404', component: Error404Component},
     {path: 'teams', component: TeamListComponent},
     {path: 'teams/new', component: TeamNewComponent},
     {path: 'teams/:id', component: TeamDetailsComponent, canActivate: [TeamRouteActivator]},
-    {path: '*', redirectTo: '/404', pathMatch: 'full'},
-    {path: '', redirectTo: '/teams', pathMatch: 'full'},
     {path: 'user', loadChildren: 'app/user/user.module#UserModule'},
     {path: 'login', component: LoginComponent},
-    {path: 'profile', component: ProfileComponent}
+    {path: 'profile', component: ProfileComponent},
+
+    {path: '*', redirectTo: '/404', pathMatch: 'full'},
+    {path: '', redirectTo: '/teams', pathMatch: 'full'}
 
 ]

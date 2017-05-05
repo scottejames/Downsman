@@ -1,10 +1,10 @@
 import {Component,OnInit} from '@angular/core'
-import {TeamService,ITeam} from '../index'
+import {TeamService,ITeam} from './index'
 @Component ({
   selector : 'team-list',
   template: `
 	<div>
-		<h1> Team listings </h1>
+		<h1> My Teams </h1>
 	 	<hr/>
 	 	<div class="row">
 	 		<div *ngFor="let team of teams" class="col-md-5">
