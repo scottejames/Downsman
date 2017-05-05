@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core'
-import {IUser} from './user.model'
 
 @Injectable()
 export class AuthService {
-    currentUser: IUser
+    currentUser
 
     // Hack to save having to login every time I test
     constructor(){

@@ -20,9 +20,8 @@ export const appRoutes: Routes = [
     {path: 'teams', component: TeamListComponent},
     {path: 'teams/new', component: TeamNewComponent},
     {path: 'teams/:id', component: TeamDetailsComponent, canActivate: [TeamRouteActivator]},
-    {path: 'user', loadChildren: 'app/user/user.module#UserModule'},
-    {path: 'login', component: LoginComponent},
-    {path: 'profile', component: ProfileComponent},
+    {path: 'user/login', component: LoginComponent},
+    {path: 'user/profile', component: ProfileComponent},
 
     {path: '*', redirectTo: '/404', pathMatch: 'full'},
     {path: '', redirectTo: '/teams', pathMatch: 'full'}
