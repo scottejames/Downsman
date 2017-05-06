@@ -29,6 +29,9 @@ export class AuthService {
         return !!this.currentUser
     }
 
+    getCommonName(){
+        return this.currentUser.firstName + ' ' + this.currentUser.lastName;
+    }
 }
 
 const TEAM :IUser[] = [

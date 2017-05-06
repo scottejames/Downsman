@@ -10,18 +10,22 @@ export class TeamService {
     return TEAMS.find(event => event.id === id)
   }
   saveTeam(team:ITeam){
-    team.id = 999;
+    team.id = this.getNextId();
     team.members = []
     TEAMS.push(team)
   }
+
+  getNextId() : number {
+    return 999;
+}
 }
 
 const TEAMS :ITeam [] = [
   {
     id: 1,
     name: 'MadHatters',
-    group: "1st HH",
-    leader: "Chris",
+    groupId: 1,
+    leaderId: 1,
     members : [{
       id: 1,
       name: 'Rod',
@@ -36,8 +40,8 @@ const TEAMS :ITeam [] = [
   {
     id: 2,
     name: 'Fools',
-    group: "5th HH",
-    leader: "BP",
+    groupId: 1,
+    leaderId: 2,
     members : [{
       id: 1,
       name: 'Dick',
@@ -52,8 +56,8 @@ const TEAMS :ITeam [] = [
   {
     id: 1,
     name: 'Woodpidgeons',
-    group: "10th HH",
-    leader: "Scott",
+    groupId: 2,
+    leaderId: 3,
     members : [{
       id: 1,
       name: 'Jenny',
