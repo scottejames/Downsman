@@ -1,38 +1,37 @@
 <h1>New Team</h1>
 <hr>
 <div class="col-md-6">
-    <form #newTeamForm="ngForm" (ngSubmit)="saveTeam(newTeamForm.value)" autocomplete="off" novalidate>
+    <form [formGroup]="teamForm" (ngSubmit)="saveTeam(teamForm.value)" autocomplete="off" novalidate>
 
 
-        <div class="form-group" [ngClass]="{'error': newTeamForm.controls.name?.invalid &&
-                    newTeamForm.controls.name?.touched}">
+        <div class="form-group">
 
             <label for="name">Team Name:</label>
-            <em *ngIf="newTeamForm.controls.name?.invalid &&
-                (newTeamForm.controls.name?.touched)">Required</em>
-
-            <input (ngModel)="name" name="name" required id="name" type="text" class="form-control"
+            <input formControlName="name" required id="name" type="text" class="form-control"
                    placeholder="Name of your team..."/>
 
+            <label for="groupId">Scout Group:</label>
+            <select formControlName="groupId" required id="groupId" type="text" class="form-control">
+                <option *ngFor="let group of scoutGroups" value="{{group.id}}">{{group.name}}</option>
+
+            </select>
+
+            <label for="leaderId">Leader:</label>
+            <input formControlName="leaderId" required id="leaderId" type="text" class="form-control"
+                   placeholder="Name of your Leader..."/>
+
+            <label for="hikeClass">Hike Class:</label>
+            <select formControlName="hikeClass" required id="hikeClass" type="text" class="form-control">
+                <option *ngFor="let class of hikeClasses" value="{{class.id}}">{{class.name}}</option>
+            </select>
+
         </div>
 
-
-        <div class="form-group" [ngClass]="{'error': newTeamForm.controls.leader?.invalid &&
-                    newTeamForm.controls.leader?.touched}">
-
-            <label for="leader">Leader:</label>
-            <em *ngIf="newTeamForm.controls.leader?.invalid &&
-                (newTeamForm.controls.leader?.touched)">Required</em>
-
-            <input (ngModel)="leader" name="leader" required id="leader" type="text" class="form-control"
-                   placeholder="Scout Leader for team..."/>
-
-        </div>
 
 
 
         <button type="submit" class="btn btn-primary">Save</button>
-        <button type="button" [disabled]="newTeamForm.invalid" class="btn btn-default" (click)="cancel()">Cancel
+        <button type="button" class="btn btn-default" (click)="cancel()">Cancel
         </button>
     </form>
 </div>

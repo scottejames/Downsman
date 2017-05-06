@@ -1,8 +1,11 @@
+import {IScoutGroup} from "../scout-group/scout-group.model";
+import {IUser} from "../user/user.model";
+
 export interface  ITeam{
     id: number,
     name: string,
-    group: string,
-    leader: string,
+    leaderId: number,
+    groupId: number,
     members : IMember[]
 }
 

@@ -6,6 +6,10 @@ import {ScoutGroupService} from '../scout-group/scout-group.service'
 import {IScoutGroup} from "../scout-group/scout-group.model";
 
 import {OnInit} from '@angular/core'
+import {FormGroup, FormControl, Validators} from "@angular/forms";
+import {IHikeClass} from "../hike-class/hike-class.model";
+import {HikeClassService} from "../hike-class/hike-class.service";
+import {AuthService} from "../user/auth.service";
 
 @Component({
     templateUrl: 'app/teams/create-team.component.html',
@@ -21,13 +25,30 @@ import {OnInit} from '@angular/core'
 
 
 export class TeamNewComponent implements OnInit {
-    isDirty: boolean = false;
 
-    constructor(private router: Router,private teamService:TeamService,private scoutGroupService: ScoutGroupService) {
+    teamForm:FormGroup;
+    name: FormControl;
+    groupId: FormControl;
+    leaderId: FormControl;
+    hikeClass: FormControl;
+
+    // data for the selector
+    hikeClasses: IHikeClass[] = [];
+    scoutGroups: IScoutGroup[] = [];
+
+    constructor(private router: Router,
+                private teamService:TeamService,
+                private auth:AuthService,
+                private scoutGroupService: ScoutGroupService,
+                private hikeClassService:HikeClassService) {
     }
+
+
     saveTeam(formValues){
-        this.teamService.saveTeam(formValues)
-        this.isDirty = false
+        //this.teamService.saveTeam(formValues)
+        formValues.leaderId = this.auth.currentUser.id;
+        formValues.member=[];
+        this.teamService.saveTeam(formValues);
         this.router.navigate(['/teams'])
 
         console.log(formValues)
@@ -35,6 +56,22 @@ export class TeamNewComponent implements OnInit {
     }
 
     ngOnInit() {
+        // required to populate drop down
+        this.hikeClasses = this.hikeClassService.getHikeClasses();
+        this.scoutGroups = this.scoutGroupService.getScoutGroups();
+
+        this.name = new FormControl('',Validators.required);
+        this.groupId = new FormControl(this.auth.currentUser.scoutGroup.id, Validators.required);
+        this.leaderId = new FormControl(this.auth.getCommonName(),Validators.required)
+        this.leaderId.disable()
+        this.hikeClass = new FormControl('',Validators.required);
+
+        this.teamForm = new FormGroup({
+            name: this.name,
+            groupId: this.groupId,
+            leaderId: this.leaderId,
+            hikeClass: this.hikeClass
+        })
     }
 
     cancel() {

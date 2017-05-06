@@ -9,6 +9,7 @@ import {NavBarComponent} from './nav/navbar.component'
 import {Error404Component} from './nav/404.component'
 
 import {ScoutGroupService} from './scout-group/scout-group.service'
+import {HikeClassService} from "./hike-class/hike-class.service";
 
 import {appRoutes} from './routes'
 
@@ -47,7 +48,8 @@ import {
         TeamRouteActivator,
         TeamService,
         AuthService,
-        ScoutGroupService
+        ScoutGroupService,
+        HikeClassService
     ],
     bootstrap: [DownsmanAppComponent]
 })
