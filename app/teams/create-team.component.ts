@@ -1,15 +1,16 @@
 import {Component} from '@angular/core'
 import {Router} from '@angular/router'
-import {TeamService} from './team.service'
+import {TeamService} from '../data/team.service'
 
-import {ScoutGroupService} from '../scout-group/scout-group.service'
-import {IScoutGroup} from "../scout-group/scout-group.model";
+import {ScoutGroupService} from '../data/scout-group.service'
+import {IScoutGroup} from "../data/scout-group.model";
 
 import {OnInit} from '@angular/core'
 import {FormGroup, FormControl, Validators} from "@angular/forms";
-import {IHikeClass} from "../hike-class/hike-class.model";
-import {HikeClassService} from "../hike-class/hike-class.service";
-import {AuthService} from "../user/auth.service";
+import {IHikeClass} from "../data/hike-class.model";
+import {HikeClassService} from "../data/hike-class.service";
+import {AuthService} from "../shared/auth.service";
+import {UserService} from "../data/user.service";
 
 @Component({
     templateUrl: 'app/teams/create-team.component.html',
@@ -40,13 +41,14 @@ export class TeamNewComponent implements OnInit {
                 private teamService:TeamService,
                 private auth:AuthService,
                 private scoutGroupService: ScoutGroupService,
-                private hikeClassService:HikeClassService) {
+                private hikeClassService:HikeClassService,
+                private userService: UserService) {
     }
 
 
     saveTeam(formValues){
         //this.teamService.saveTeam(formValues)
-        formValues.leaderId = this.auth.currentUser.id;
+        formValues.leaderId = this.userService.currentUser.id;
         formValues.member=[];
         this.teamService.saveTeam(formValues);
         this.router.navigate(['/teams'])
@@ -61,8 +63,8 @@ export class TeamNewComponent implements OnInit {
         this.scoutGroups = this.scoutGroupService.getScoutGroups();
 
         this.name = new FormControl('',Validators.required);
-        this.groupId = new FormControl(this.auth.currentUser.scoutGroup.id, Validators.required);
-        this.leaderId = new FormControl(this.auth.getCommonName(),Validators.required)
+        this.groupId = new FormControl(this.userService.currentUser.scoutGroup.id, Validators.required);
+        this.leaderId = new FormControl(this.userService.getCommonName(),Validators.required)
         this.leaderId.disable()
         this.hikeClass = new FormControl('',Validators.required);
 

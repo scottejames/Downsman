@@ -1,4 +1,4 @@
-import {IScoutGroup} from "../scout-group/scout-group.model";
+import {IScoutGroup} from "./scout-group.model";
 
 export interface IUser{
     id: number

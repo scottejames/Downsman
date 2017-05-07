@@ -1,8 +1,8 @@
-import {Component,OnInit} from '@angular/core'
-import {TeamService,ITeam} from './index'
-@Component ({
-  selector : 'team-list',
-  template: `
+import {Component, OnInit} from '@angular/core'
+import {TeamService, ITeam} from '../data/index'
+@Component({
+    selector: 'team-list',
+    template: `
 	<div>
 		<h1> My Teams </h1>
 	 	<hr/>
@@ -16,11 +16,14 @@ import {TeamService,ITeam} from './index'
   `
 })
 
-export class TeamListComponent implements OnInit{
-	teams : ITeam[]
-	constructor(private teamService: TeamService){
-	}
-	ngOnInit(){
-			this.teams = this.teamService.getTeams()
-		}
+export class TeamListComponent implements OnInit {
+    teams: ITeam[]
+
+    constructor(private teamService: TeamService) {
+    }
+
+    ngOnInit() {
+        this.teams = this.teamService.getTeams();
+        console.log(this.teams);
+    }
 }

@@ -1,7 +1,7 @@
 
 import { Router, ActivatedRouteSnapshot, CanActivate } from "@angular/router"
 import { Injectable } from "@angular/core"
-import { TeamService } from './team.service'
+import { TeamService } from '../../data/team.service'
 
 @Injectable()
 export class TeamRouteActivator implements CanActivate{

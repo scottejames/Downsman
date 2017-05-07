@@ -8,20 +8,24 @@ import {DownsmanAppComponent} from './downsman-app.component'
 import {NavBarComponent} from './nav/navbar.component'
 import {Error404Component} from './nav/404.component'
 
-import {ScoutGroupService} from './scout-group/scout-group.service'
-import {HikeClassService} from "./hike-class/hike-class.service";
+import {
+    ScoutGroupService,
+    HikeClassService,
+    TeamService,
+    UserService
+} from './data/index'
+
+
 
 import {appRoutes} from './routes'
-
+import {AuthService} from './shared/auth.service'
 import {
     ProfileComponent,
     LoginComponent,
-    AuthService
 
 } from './user/index'
 import {
     TeamRouteActivator,
-    TeamService,
     TeamThumbnailComponent,
     TeamListComponent,
     TeamDetailsComponent,
@@ -49,7 +53,8 @@ import {
         TeamService,
         AuthService,
         ScoutGroupService,
-        HikeClassService
+        HikeClassService,
+        UserService
     ],
     bootstrap: [DownsmanAppComponent]
 })

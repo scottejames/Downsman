@@ -14,7 +14,7 @@ export class HikeClassService {
 }
 
 
-const CLASSES: IHikeClass [] = [
+const CLASSES = [
     {id: 1, name: 'Open'},
     {id: 2, name: 'S Class'},
     {id: 3, name: 'V Class'

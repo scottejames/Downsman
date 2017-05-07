@@ -1,5 +1,6 @@
 import {Component} from '@angular/core'
-import {AuthService} from '../user/auth.service'
+import {AuthService} from '../shared/auth.service'
+import {UserService} from "../data/user.service";
 
 @Component({
     selector: 'nav-bar',
@@ -12,6 +13,6 @@ import {AuthService} from '../user/auth.service'
       `]
 })
 export class NavBarComponent {
-    constructor(private auth :AuthService) {
+    constructor(private auth :AuthService, private userService: UserService) {
     }
 }

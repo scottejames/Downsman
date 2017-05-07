@@ -1,9 +1,10 @@
-import { Component,OnInit } from '@angular/core'
-import { FormControl,FormGroup,Validators } from '@angular/forms'
-import { AuthService } from './auth.service'
+import {Component, OnInit} from '@angular/core'
+import {FormControl, FormGroup, Validators} from '@angular/forms'
+import {AuthService} from '../shared/auth.service'
 import {Router} from '@angular/router'
-import {ScoutGroupService} from "../scout-group/scout-group.service";
-import {IScoutGroup} from '../scout-group/scout-group.model'
+import {ScoutGroupService} from "../data/scout-group.service";
+import {IScoutGroup} from '../data/scout-group.model'
+import {UserService} from "../data/user.service";
 
 @Component({
     templateUrl: 'app/user/profile.component.html',
@@ -17,24 +18,25 @@ import {IScoutGroup} from '../scout-group/scout-group.model'
         `]
 
 })
-export class ProfileComponent implements OnInit{
-    profileForm:FormGroup;
+export class ProfileComponent implements OnInit {
+    profileForm: FormGroup;
     private firstName: FormControl;
     private lastName: FormControl;
     private group: FormControl;
 
     // data for the selector
-    scoutGroups : IScoutGroup[] = [];
+    scoutGroups: IScoutGroup[] = [];
 
-    constructor(private auth:AuthService,private router:Router, private scoutGroupService:ScoutGroupService){
+    constructor(private auth: AuthService, private userService: UserService, private router: Router, private scoutGroupService: ScoutGroupService) {
 
     }
+
     ngOnInit() {
         this.scoutGroups = this.scoutGroupService.getScoutGroups();
-        console.log(this.auth.currentUser)
-        this.firstName = new FormControl(this.auth.currentUser.firstName, Validators.required);
-        this.lastName = new FormControl(this.auth.currentUser.lastName, Validators.required);
-        this.group = new FormControl(this.auth.currentUser.scoutGroup.id, Validators.required);
+        console.log(this.userService.currentUser)
+        this.firstName = new FormControl(this.userService.currentUser.firstName, Validators.required);
+        this.lastName = new FormControl(this.userService.currentUser.lastName, Validators.required);
+        this.group = new FormControl(this.userService.currentUser.scoutGroup.id, Validators.required);
 
         this.profileForm = new FormGroup({
             firstName: this.firstName,
@@ -42,23 +44,27 @@ export class ProfileComponent implements OnInit{
             group: this.group
         });
     }
-    logout(){
-        this.auth.currentUser=null;
+
+    logout() {
+        this.auth.logoutUser();
         this.router.navigate(['user/login']);
 
     }
-    cancel(){
+
+    cancel() {
         this.router.navigate(['teams']);
     }
-    saveProfile(formValues){
-        this.auth.updateCurrentUser(formValues.firstName,formValues.lastName,formValues.group);
+
+    saveProfile(formValues) {
+        this.userService.updateCurrentUser(formValues.firstName, formValues.lastName, formValues.group);
         this.router.navigate(['teams']);
-        console.log(formValues.group    )
+        console.log(formValues.group)
     }
 
     validateFirstName() {
-        return  this.firstName.valid || this.firstName.untouched;
+        return this.firstName.valid || this.firstName.untouched;
     }
+
     validateLastName() {
         return this.lastName.valid || this.lastName.untouched;
     }
