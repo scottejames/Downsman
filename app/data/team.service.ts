@@ -12,7 +12,7 @@ export class TeamService {
     }
 
     getTeams(): ITeam[] {
-        var result : ITeam[] = TEAMS.map( t => this.enrichTeam(t));
+        var result : ITeam[] = TEAMS.filter(t=> t.leaderId === this.userService.currentUser.id).map( t => this.enrichTeam(t));
         return result;
     }
 
