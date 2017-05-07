@@ -19,17 +19,22 @@ import {
 
 import {appRoutes} from './routes'
 import {AuthService} from './shared/auth.service'
+import {CollapsibleWellComponent} from './shared/collapsableWell.component'
+
 import {
     ProfileComponent,
     LoginComponent,
 
 } from './user/index'
+
 import {
     TeamRouteActivator,
     TeamThumbnailComponent,
     TeamListComponent,
     TeamDetailsComponent,
-    TeamNewComponent
+    TeamNewComponent,
+    ScoutListComponent
+
 } from './teams/index'
 
 @NgModule({
@@ -46,7 +51,9 @@ import {
         TeamNewComponent,
         Error404Component,
         ProfileComponent,
-        LoginComponent
+        LoginComponent,
+        CollapsibleWellComponent,
+        ScoutListComponent
     ],
     providers: [
         TeamRouteActivator,
