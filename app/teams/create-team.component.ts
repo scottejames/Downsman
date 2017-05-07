@@ -49,11 +49,11 @@ export class TeamNewComponent implements OnInit {
     saveTeam(formValues){
         //this.teamService.saveTeam(formValues)
         formValues.leaderId = this.userService.currentUser.id;
-        formValues.member=[];
+        formValues.scouts=[];
+        console.log(formValues);
         this.teamService.saveTeam(formValues);
-        this.router.navigate(['/teams'])
+        //this.router.navigate(['/teams'])
 
-        console.log(formValues)
 
     }
 

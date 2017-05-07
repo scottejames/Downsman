@@ -6,36 +6,39 @@ import {ScoutGroupService} from "./scout-group.service";
 
 @Injectable()
 export class TeamService {
-    constructor(private auth: AuthService, private userService: UserService,private groupScoutService: ScoutGroupService
-    ) {
+    constructor(private auth: AuthService, private userService: UserService, private groupScoutService: ScoutGroupService) {
 
     }
 
     getTeams(): ITeam[] {
-        var result : ITeam[] = TEAMS.filter(t=> t.leaderId === this.userService.currentUser.id).map( t => this.enrichTeam(t));
+        var result: ITeam[] = TEAMS.filter(t => t.leaderId === this.userService.currentUser.id).map(t => this.enrichTeam(t));
         return result;
     }
 
     getTeam(id: number): ITeam {
-        var team = TEAMS.find(t=> t.id === id);
+        var team = TEAMS.find(t => t.id === id);
         return this.enrichTeam(team);
     }
 
     saveTeam(team: any) {
         team.id = this.getNextId();
-        team.scouts = [];
-        team.leaderId = team.leader.id;
-        team.groupId = team.group.id;
+        if (!team.leaderId)
+            team.leaderId = team.leader.id;
+        if (!team.groupId)
+            team.groupId = team.group.id;
+        console.log(team);
         TEAMS.push(team);
     }
 
-    private enrichTeam(team: any) :ITeam{
+    private enrichTeam(team: any): ITeam {
         team.group = this.groupScoutService.getScoutGroup(team.groupId);
         team.leader = this.userService.getUserById(team.leaderId);
         return team;
     }
+
     getNextId(): number {
-        return 999;
+        const nextId = Math.max.apply(null,TEAMS.map(s=> s.id))+1;
+        return nextId
     }
 }
 
@@ -69,7 +72,7 @@ const TEAMS = [
             }]
     },
     {
-        id: 1,
+        id: 3,
         name: 'Woodpidgeons',
         groupId: 2,
         leaderId: 3,
