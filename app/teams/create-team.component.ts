@@ -52,7 +52,7 @@ export class TeamNewComponent implements OnInit {
         formValues.scouts=[];
         console.log(formValues);
         this.teamService.saveTeam(formValues);
-        //this.router.navigate(['/teams'])
+        this.router.navigate(['/teams'])
 
 
     }

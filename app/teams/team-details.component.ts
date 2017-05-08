@@ -25,6 +25,7 @@ export class TeamDetailsComponent{
 
   deleteScout( identifier: number){
     console.log('TeamDetailsComponent :delete scout', this.team.id, identifier);
+    this.teamService.deleteScout(this.team.id,identifier);
   }
   addScout(){
       this.scoutAddMode = true;
