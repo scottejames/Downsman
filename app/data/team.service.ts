@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {ITeam} from "./team.model";
+import {ITeam, IScout} from "./team.model";
 import {AuthService} from "../shared/auth.service";
 import {UserService} from "./user.service";
 import {ScoutGroupService} from "./scout-group.service";
@@ -26,7 +26,7 @@ export class TeamService {
             team.leaderId = team.leader.id;
         if (!team.groupId)
             team.groupId = team.group.id;
-        console.log(team);
+      //  console.log(team);
         TEAMS.push(team);
     }
 
@@ -36,9 +36,28 @@ export class TeamService {
         return team;
     }
 
-    getNextId(): number {
-        const nextId = Math.max.apply(null,TEAMS.map(s=> s.id))+1;
+    addScout(teamId: number,scout: IScout){
+        scout.id = this.getNextScoutID(teamId);
+        var team = TEAMS.find(t => t.id === teamId);
+        team.scouts.push(scout);
+    }
+
+    deleteScout(teamId: number,id: number){
+        var team = TEAMS.find(t => t.id === teamId);
+        var scouts :IScout [] = team.scouts;
+        scouts = scouts.filter(s=>s.id!=id);
+        team.scouts = scouts;
+    }
+
+    private getNextId(): number {
+        const nextId = Math.max.apply(null, TEAMS.map(s => s.id)) + 1;
         return nextId
+    }
+    private getNextScoutID(teamId: number): number{
+        var team = TEAMS.find(t => t.id === teamId);
+        const nextId = Math.max.apply(null, team.scouts.map(s => s.id)) + 1;
+        return nextId;
+
     }
 }
 
@@ -49,10 +68,12 @@ const TEAMS = [
         groupId: 1,
         leaderId: 1,
         scouts: [{
+            id: 1,
             name: 'Rod',
             age: 12
         },
             {
+                id: 2,
                 name: 'Jane',
                 age: 14
             }]
@@ -63,10 +84,12 @@ const TEAMS = [
         groupId: 1,
         leaderId: 2,
         scouts: [{
+            id: 1,
             name: 'Dick',
             age: 13
         },
             {
+                id: 2,
                 name: 'Roger',
                 age: 11
             }]
@@ -77,10 +100,12 @@ const TEAMS = [
         groupId: 2,
         leaderId: 3,
         scouts: [{
+            id: 1,
             name: 'Jenny',
             age: 14
         },
             {
+                id: 2,
                 name: 'Andrew',
                 age: 15
             }]

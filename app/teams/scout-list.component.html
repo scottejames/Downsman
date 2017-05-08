@@ -1,12 +1,12 @@
 <div class="row" *ngFor="let scout of scouts">
 
     <div class="col-md-1">
-        DELETE
+        <a (click)="deleteScout(teamId,scout.id)">DELETE</a>
     </div>
     <div class="col-md-10">
         <collapsible-well>
             <div class="title">
-                {{scout.name}}got
+                {{scout.name}}
             </div>
             <div class="body">
                 <h6>Information</h6>

@@ -11,6 +11,7 @@ export interface  ITeam {
 
 
 export interface IScout {
-    name: string
+    id: number,
+    name: string,
     age: number
 }
