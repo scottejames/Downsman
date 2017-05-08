@@ -1,12 +1,18 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-11">
+        <div class="col-md-7">
             <h2> {{team?.name}} </h2>
             <div> Leader: {{team?.leader.firstName}} {{team?.leader.lastName}}</div>
             <div> Group: {{team?.group.name}}</div>
         </div>
-    </div>
-    <hr>
 
-    <scout-list [teamId]="team.id" [scouts]="team.scouts"></scout-list>
+    </div>
+
+    <hr>
+    <div class="row">
+        <div class="col-md-11">
+            <scout-list [teamId]="team.id" [scouts]="team.scouts"></scout-list>
+        </div>
+    </div>
+
 </div>

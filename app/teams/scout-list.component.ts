@@ -20,4 +20,9 @@ export class ScoutListComponent {
         this.teamService.deleteScout(teamId, id);
         console.log('delete scout', teamId, id)
     }
+    addScout(teamId:number){
+
+        this.teamService.addScout(teamId,{id: 0,name: 'scott', age:99});
+
+    }
 }
