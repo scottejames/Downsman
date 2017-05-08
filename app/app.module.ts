@@ -33,7 +33,8 @@ import {
     TeamListComponent,
     TeamDetailsComponent,
     TeamNewComponent,
-    ScoutListComponent
+    ScoutListComponent,
+    CreateScoutComponent
 
 } from './teams/index'
 
@@ -53,7 +54,8 @@ import {
         ProfileComponent,
         LoginComponent,
         CollapsibleWellComponent,
-        ScoutListComponent
+        ScoutListComponent,
+        CreateScoutComponent
     ],
     providers: [
         TeamRouteActivator,

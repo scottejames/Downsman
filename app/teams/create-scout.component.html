@@ -1,0 +1,19 @@
+<h1>New Scout</h1>
+<hr>
+<div class="col-md-6">
+    <form [formGroup]="scoutForm" (ngSubmit)="saveScout(scoutForm.value)" autocomplete="off" novalidate>
+
+
+        <div class="form-group">
+
+            <label for="name">Scout Name:</label>
+            <input formControlName="name" required id="name" type="text" class="form-control"
+                   placeholder="Name of scout..."/>
+            <label for="age">Scout Age:</label>
+            <input formControlName="age" required id="age" type="number" class="form-control"
+                   placeholder="Age of scout..."/>
+        </div>
+        <button type="submit"  class="btn btn-primary">Save</button>
+        <button type="button" (click)="cancelScout()" class="btn btn-default">Cancel</button>
+    </form>
+</div>

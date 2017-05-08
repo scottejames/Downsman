@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { IScout } from '../data/team.model';
 import {TeamService} from "../data/team.service";
 @Component ({
@@ -10,19 +10,26 @@ export class ScoutListComponent {
 
     @Input() scouts : IScout[];
     @Input() teamId : number
+    @Output() delete = new EventEmitter()
+    @Output() add = new EventEmitter()
+
+    addMode:boolean = false;
+
     ngOnInit() {
         console.log(this.scouts);
     }
     constructor(private teamService:TeamService){
 
     }
-    deleteScout(teamId: number, id: number){
-        this.teamService.deleteScout(teamId, id);
-        console.log('delete scout', teamId, id)
-    }
-    addScout(teamId:number){
 
-        this.teamService.addScout(teamId,{id: 0,name: 'scott', age:99});
-
+    deleteScout(id: number){
+        this.delete.emit(id);
+        console.log('ScoutListComponent: delete ' , id);
     }
+
+    addScout(){
+        this.add.emit();
+        console.log('ScoutListComponent: add');
+    }
+
 }

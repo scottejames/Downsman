@@ -1,23 +1,28 @@
-<div class="col-md-7" style="margin-right:20px;margin-left:20px">
-    <a (click)="addScout(teamId)">ADD SCOUT</a>
-</div>
-<br>
-<br>
-<div class="row" *ngFor="let scout of scouts">
 
-    <div class="col-md-1">
-        <a (click)="deleteScout(teamId,scout.id)">DELETE</a>
+
+<div *ngIf="!addMode">
+
+    <div class="col-md-7" style="margin-right:20px;margin-left:20px">
+        <a (click)="addScout()">ADD SCOUT</a>
     </div>
-    <div class="col-md-10">
-        <collapsible-well>
-            <div class="title">
-                {{scout.name}}
-            </div>
-            <div class="body">
-                <h6>Information</h6>
-                <span>Age: {{scout.age}}</span><br/>
-                <span>Notes:  <p> ..jgnweongoe </p></span>
-            </div>
-        </collapsible-well>
+    <br>
+    <br>
+    <div class="row" *ngFor="let scout of scouts">
+
+        <div class="col-md-1">
+            <a (click)="deleteScout(scout.id)">DELETE</a>
+        </div>
+        <div class="col-md-10">
+            <collapsible-well>
+                <div class="title">
+                    {{scout.name}}
+                </div>
+                <div class="body">
+                    <h6>Information</h6>
+                    <span>Age: {{scout.age}}</span><br/>
+                    <span>Notes:  <p> ..some notes.. </p></span>
+                </div>
+            </collapsible-well>
+        </div>
     </div>
 </div>

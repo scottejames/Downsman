@@ -11,7 +11,14 @@
     <hr>
     <div class="row">
         <div class="col-md-11">
-            <scout-list [teamId]="team.id" [scouts]="team.scouts"></scout-list>
+            <scout-list *ngIf="!scoutAddMode"
+                            [teamId]="team.id"
+                            [scouts]="team.scouts"
+                            (delete)="deleteScout($event)"
+                            (add)="addScout()"></scout-list>
+
+            <create-scout (save)="saveScout($event)" (cancel)="cancelCreateScout()" *ngIf="scoutAddMode"> </create-scout>
+
         </div>
     </div>
 
