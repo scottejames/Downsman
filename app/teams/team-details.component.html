@@ -11,14 +11,23 @@
     <hr>
     <div class="row">
         <div class="col-md-11">
-            <scout-list *ngIf="!scoutAddMode"
+            <scout-list *ngIf="mode==='list'"
                             [teamId]="team.id"
                             [scouts]="team.scouts"
                             (delete)="deleteScout($event)"
-                            (add)="addScout()"></scout-list>
+                            (add)="addScout()"
+                            (edit)="editScout($event)"></scout-list>
 
-            <create-scout (save)="saveScout($event)" (cancel)="cancelCreateScout()" *ngIf="scoutAddMode"> </create-scout>
+            <create-scout *ngIf="mode==='new'"
+                            (save)="saveScout($event)"
+                            (cancel)="cancelCreateScout()" > </create-scout>
 
+            <create-scout *ngIf="mode==='edit'"
+                          [scoutId]="selectedScout.id"
+                          [scoutName]="selectedScout.name"
+                          [scoutAge]="selectedScout.age"
+                          (save)="updateScout($event)"
+                          (cancel)="cancelCreateScout()" > </create-scout>
         </div>
     </div>
 

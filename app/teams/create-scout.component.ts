@@ -1,5 +1,6 @@
-import {Output, Component, OnInit, EventEmitter} from '@angular/core'
+import {Output, Input,Component, OnInit, EventEmitter} from '@angular/core'
 import {FormControl, FormGroup, Validators} from '@angular/forms'
+import {TeamService} from "../data/team.service";
 
 @Component({
     selector: 'create-scout',
@@ -16,27 +17,40 @@ import {FormControl, FormGroup, Validators} from '@angular/forms'
 export class CreateScoutComponent implements OnInit {
     @Output() save = new EventEmitter();
     @Output() cancel = new EventEmitter();
+    @Input() scoutId : number;
+    @Input() scoutName: string;
+    @Input() scoutAge: number;
+
     scoutForm: FormGroup;
-    name: FormControl;
-    age: FormControl;
+    nameCtrl: FormControl;
+    ageCtrl: FormControl;
+    idCtrl : FormControl;
+
 
     ngOnInit() {
-        this.name = new FormControl('', Validators.required);
-        this.age = new FormControl('', Validators.required);
+        if (!this.scoutId) {
+            this.nameCtrl = new FormControl('', Validators.required);
+            this.ageCtrl = new FormControl('', Validators.required);
+            this.idCtrl = new FormControl('');
+        } else {
+            this.nameCtrl = new FormControl(this.scoutName, Validators.required);
+            this.ageCtrl = new FormControl(this.scoutAge, Validators.required);
+            this.idCtrl = new FormControl(this.scoutId);
+
+        }
         this.scoutForm = new FormGroup({
-            name: this.name,
-            age: this.age
+            name: this.nameCtrl,
+            age: this.ageCtrl,
+            id: this.idCtrl
         })
     }
 
     saveScout(formValues) {
-        console.log(formValues)
         this.save.emit(formValues)
     }
 
     cancelScout() {
         this.cancel.emit();
-        console.log('cancelled');
     }
 }
 

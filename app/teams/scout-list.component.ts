@@ -9,9 +9,10 @@ import {TeamService} from "../data/team.service";
 export class ScoutListComponent {
 
     @Input() scouts : IScout[];
-    @Input() teamId : number
-    @Output() delete = new EventEmitter()
-    @Output() add = new EventEmitter()
+    @Input() teamId : number;
+    @Output() delete = new EventEmitter();
+    @Output() add = new EventEmitter();
+    @Output() edit = new EventEmitter();
 
     addMode:boolean = false;
 
@@ -21,7 +22,10 @@ export class ScoutListComponent {
     constructor(private teamService:TeamService){
 
     }
-
+    editScout(id: number) {
+        this.edit.emit(id);
+        console.log('ScoutListComponent: edit' , id);
+    }
     deleteScout(id: number){
         this.delete.emit(id);
         console.log('ScoutListComponent: delete ' , id);

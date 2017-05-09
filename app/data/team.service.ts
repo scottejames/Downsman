@@ -41,12 +41,24 @@ export class TeamService {
         var team = TEAMS.find(t => t.id === teamId);
         team.scouts.push(scout);
     }
-
+    updateScout(teamId: number, scout: IScout){
+        var team = TEAMS.find(t => t.id === teamId);
+        var scouts :IScout [] = team.scouts;
+        scouts = scouts.filter(s=>s.id!=scout.id);
+        scouts.push(scout);
+        team.scouts = scouts;
+    }
     deleteScout(teamId: number,id: number){
         var team = TEAMS.find(t => t.id === teamId);
         var scouts :IScout [] = team.scouts;
         scouts = scouts.filter(s=>s.id!=id);
         team.scouts = scouts;
+    }
+
+    getScout(teamId: number, id: number) : IScout{
+        var team = TEAMS.find(t => t.id === teamId);
+        var scout = team.scouts.find(s => s.id === id);
+        return scout;
     }
 
     private getNextId(): number {

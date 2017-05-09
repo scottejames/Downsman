@@ -1,0 +1,14 @@
+
+Entering wrong user name should give an error message
+
+Dont show hike classes in team
+
+Should have traffic light for
+    Ready
+    Completed/legal but not ready
+    Not complete/ legal
+
+Admin interface - what does this mean?
+
+Validators by hike class
+
